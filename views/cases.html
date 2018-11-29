@@ -1,0 +1,33 @@
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+
+
+
+<style>
+    input, select, button{
+        border-radius:4px !important;
+        font-weight:bold;
+    }
+</style>
+<div class="row" ng-controller="CasesController">
+    <div class="col-md-12">
+        <div class="table-toolbar">
+        	<div class="row">
+        		<div class="col-md-12" style="text-align:right;">
+        			<div class="btn-group">
+        				<button id="add_cases" class="btn sbold green" style="background-color:rgba(220, 208, 208, 0.16);border-color:#6d6d6d;border-radius:4px !important;color:#fff;" ng-click="go_create_cases()"> Add New Cases
+        					<i class="fa fa-plus"></i>
+        				</button>
+        				
+        			</div>
+        			<div class="btn-group">
+        				
+        				
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <div ui-view class="profile-content fade-in-up"></div>
+    </div>
+</div>

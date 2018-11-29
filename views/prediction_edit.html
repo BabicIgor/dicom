@@ -1,0 +1,39 @@
+<style>
+    input{
+        font-weight:bold;
+    }
+    select{
+        font-weight:bold;
+    }
+    .datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
+        font-family: 'proximanovalight' !important;
+    }
+    label{
+        font-weight:bold;
+    }
+</style>
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet light bordered">
+    
+    <div class="portlet-body form">
+        <form role="form">
+            <div class="form-body">
+                
+                <div class="form-group form-md-line-input form-md-floating-label has-success">
+                    <input type="text" class="form-control edited" id="prediction_name" ng-model="row.prediction_name">
+                    <label for="form_control_1">Prediction Name</label>
+                </div>
+                
+                <div class="form-group form-md-line-input form-md-floating-label has-success">
+                    <input type="text" class="form-control edited" id="prediction_desc" ng-model="row.prediction_desc">
+                    <label for="form_control_1">Prediction Description</label>
+                </div>
+                <input type="hidden" id="real_prediction_id" />
+            </div>
+            <div class="form-actions noborder">
+                <button type="button" class="btn blue" ng-click="edit_prediction()">Update</button>
+                <button type="button" class="btn default" ng-click="close_prediction()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

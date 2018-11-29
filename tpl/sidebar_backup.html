@@ -1,0 +1,91 @@
+<style>
+    .page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    /* border-top: 1px solid #3d4957; */
+    color: #fff;
+}
+
+</style>
+
+
+<div class="page-sidebar navbar-collapse collapse" style="background:#222c3c;">
+    <!-- BEGIN SIDEBAR MENU -->
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <!--<ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">-->
+    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200"  style="padding-top: 20px" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+        
+        <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+        <li class="sidebar-toggler-wrapper hide">
+            <div class="sidebar-toggler">
+                <span></span>
+            </div>
+        </li>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+        <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+        <li class="sidebar-search-wrapper">
+            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+            <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+            <form class="sidebar-search  sidebar-search-bordered" action="page_general_search_3.html" method="POST">
+                <a href="javascript:;" class="remove">
+                    <i class="icon-close"></i>
+                </a>
+                
+            </form>
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+        </li>
+        <li class="start nav-item">
+            <a ui-sref="dashboard">
+                <i class="icon-home"></i>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="hospital.list">
+                <i class="fa fa-hospital-o"></i>
+                <span class="title">Hospital/Institution</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="doctor.list">
+                <i class="fa fa-stethoscope"></i>
+                <span class="title">Doctor</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="radio.list">
+                <i class="fa fa-heart"></i>
+                <span class="title">Radiologist</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="equipment">
+                <i class="icon-home"></i>
+                <span class="title">Equipment Master</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="prediction.list">
+                <i class="icon-home"></i>
+                <span class="title">Prediction Master</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="department.list">
+                <i class="fa fa-user"></i>
+                <span class="title">Department List</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="cases.list">
+                <i class="fa fa-suitcase"></i>
+                <span class="title">Cases</span>
+            </a>
+        </li>
+    </ul>
+    <!-- END SIDEBAR MENU -->
+</div>

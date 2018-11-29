@@ -1,0 +1,235 @@
+<style>
+    .btn-group>.dropdown-menu.pull-left:before, .dropdown-toggle>.dropdown-menu.pull-left:before, .dropdown>.dropdown-menu.pull-left:before {
+        left: auto;
+        right: inherit !important;
+    }
+    .btn-group>.dropdown-menu:before, .dropdown-toggle>.dropdown-menu:before, .dropdown>.dropdown-menu:before {
+        position: absolute;
+        top: -8px;
+        left: 9px;
+        right: auto;
+        display: inline-block!important;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #e0e0e0;
+        border-left: 8px solid transparent;
+        content: '';
+    }
+    .btn-group>.dropdown-menu.pull-left:after, .dropdown-toggle>.dropdown-menu.pull-left:after, .dropdown>.dropdown-menu.pull-left:after {
+        left: auto;
+        right: inherit !important;
+    }
+    .btn-group>.dropdown-menu:after, .dropdown-toggle>.dropdown-menu:after, .dropdown>.dropdown-menu:after {
+        position: absolute;
+        top: -7px;
+        left: 10px;
+        right: auto;
+        display: inline-block!important;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #fff;
+        border-left: 7px solid transparent;
+        content: '';
+    }
+    .add_data_hospital{
+        padding: 0px !important;padding-left:10px !important; padding-right:2px !important; padding-top:2px !important; padding-bottom:4px !important;
+    }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-radius: 50% !important;
+      border-top: 5px solid #3498db;
+      width: 50px;
+      height: 50px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    
+    
+.table-striped>tbody>tr:nth-of-type(even) {
+    background-color: #222c3c !important;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #222c3c !important;
+}
+table.dataTable td.sorting_1, table.dataTable td.sorting_2, table.dataTable td.sorting_3, table.dataTable th.sorting_1, table.dataTable th.sorting_2, table.dataTable th.sorting_3 {
+    background: #222c3c!important;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: top;
+    border-top: 1px solid #4f5467;
+}
+.table-hover>tbody>tr:hover, .table-hover>tbody>tr:hover>td {
+    background: #253042!important;
+}
+
+
+.fs-label-wrap {
+    position: relative;
+    background-color: #4f5467;
+    border: 1px solid #4f5467;
+    cursor: default;
+    color: #fff;
+    border-radius: 4px !important;
+}
+
+.fs-label-wrap .fs-label {
+    padding: 6px 22px 6px 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #1b2432;
+    border-radius: 4px !important;
+}
+
+
+
+.fs-dropdown {
+    position: absolute;
+    background-color: #1b2432;
+    border: 1px solid #4f5467;
+    width: 200px;
+    margin-top: 5px;
+    z-index: 1000;
+    color: #fff;
+    border-radius: 4px !important;
+}
+.fs-search input {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+    padding: 6px 0;
+    width: 100%;
+    background: #1b2432;
+}
+
+
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    color: #fff;
+    background-color: #253042;
+    border-color: #807f7f;
+    cursor: not-allowed;
+    border-radius: 12px !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: #253042;
+    border-color: #53575f;
+    cursor: default;
+    border-radius: 10px !important;
+}
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    text-decoration: none;
+    color: #337ab7;
+    background-color: #253042;
+    border: 1px solid #807f7f;
+    margin-left: -1px;
+    border-radius: 12px !important;
+}
+
+</style>
+
+
+
+
+<div class="loader" ng-show="isAllRendered == 0" style="position:absolute;left:calc(50% - 25px);"></div>
+<div ng-show="isAllRendered == 1">
+<div style="padding:30px;background:#222c3c;border-radius:10px !important;display:inline-block;">
+    
+<select class="test" multiple="multiple" id="selectColumns"  ng-model="selectColumns"  ng-change="select_col()" >
+    <option value="1" selected>Radiologist Name</option>
+    <option value="2" selected>Profile</option>
+    <option value="3" selected>Institution/Hospital</option>
+    <option value="4" selected>Specialization</option>
+    <option value="5" selected>Contact</option>
+    <option value="6" selected>Email</option>
+    <option value="7" selected>Action</option>
+</select>    
+    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-hover table-checkable order-column">
+        <col width="25%">
+        <col width="10%">
+        <col width="10%">
+        <col width="10%">
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <thead style="background:#222c3c;color:#949ba2;">
+    		<tr>
+    			
+    			<th ng-show="column1 == 1" style="text-align:center;border-color:#807f7f;"> Radiologist Name </th>
+    			<th ng-show="column2 == 1" style="text-align:center;border-color:#807f7f;"> Profile </th>
+    			<th ng-show="column3 == 1" style="text-align:center;border-color:#807f7f;"> Institution/Hospital </th>
+    			<th ng-show="column4 == 1" style="text-align:center;border-color:#807f7f;"> Specialization </th>
+    			<th ng-show="column5 == 1" style="text-align:center;border-color:#807f7f;"> Contact </th>
+    			<th ng-show="column6 == 1" style="text-align:center;border-color:#807f7f;"> Email </th>
+    			<th ng-show="column7 == 1" style="text-align:center;border-color:#807f7f;">  Action </th>
+    		</tr>
+    	</thead>
+    	<tbody style="background:#222c3c;color:#949ba2;">
+    		<tr class="odd gradeX" style="text-align:center;" ng-repeat="x in records">
+    			<td ng-show="column1 == 1" style="vertical-align:middle;"> {{x.first_name}} {{x.last_name}} </td>
+    			<td ng-show="column2 == 1" style="vertical-align:middle;">
+    				{{x.profile_type}}
+    			</td>
+    			<td ng-show="column3 == 1" style="vertical-align:middle;">
+    				<span> {{x.institution_name}} </span>
+    			</td>
+    			<td ng-show="column4 == 1" style="vertical-align:middle;">
+    			    {{x.specialization}}
+    			</td>
+    			<td ng-show="column5 == 1" style="vertical-align:middle;">
+    			    {{x.phone_number}}
+    			</td>
+    			<td ng-show="column6 == 1" class="center" style="vertical-align:middle;">
+    				<a > {{x.phy_email}} </a>
+    			</td>
+    			<td ng-show="column7 == 1" style="vertical-align:middle;">
+    				<button type="button" class="btn btn-info" ng-click="row_edit(x.physician_id);" style="border-radius:50% !important;margin-right:0px;font-size:15px;padding:2px 6px;background:#888;"><i class="fa fa-pencil" style="font-size:13px;"></i></button>
+    				<button type="button" class="btn btn-danger" data-target="#myModal_autocomplete_{{x.physician_id}}" data-toggle="modal"  style="border-radius:50% !important;margin-right:0px;font-size:15px;background:#f96332;padding:2px 7px;"><i class="fa fa-trash" style="font-size:13px;"></i></button>
+                    <div id="myModal_autocomplete_{{x.physician_id}}" class="modal fade" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" style="width:300px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Are you sure to delete?</h4>
+                                </div>
+                                <div class="modal-body form" style="text-align:center;">
+                                    <form action="#" class="form-horizontal form-row-seperated">
+                                        <div class="form-group">
+                                           <a data-apply="confirmation" ng-click="delete_confirm(x.physician_id);" class="btn btn-sm btn-danger" ><i class="glyphicon glyphicon-ok"></i>  &nbsp;Delete</a>
+                                            <a  data-dismiss="modal" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i>  &nbsp;Cancel</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+    			</td>
+    		</tr>
+    	</tbody>
+    </table>    
+</div>
+</div>
+<script>
+    $('.test').fSelect();
+</script>

@@ -1,0 +1,184 @@
+<style>
+    .form-group{
+        margin-bottom:0px;
+    }
+    .help-block{
+        margin-bottom:0px !important;
+    }
+    .input-item {
+      margin: 18px 0;
+    }
+    
+    .error-wrapper {
+      display: inline-block;
+      color: red;
+    }
+    
+    .text-box {
+      width: 200px;
+    }
+    
+    .text-box.ng-valid:not(.custom-focused) {
+      border-color: green;
+    }
+    
+    .text-box.ng-invalid.ng-dirty:not(.custom-focused) {
+      background-color: red;
+    }
+    input{
+        font-weight:bold;
+    }
+    select{
+        font-weight:bold;
+    }
+    .datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
+        font-family: 'proximanovalight' !important;
+    }
+    label{
+        font-weight:bold;
+    }
+</style>
+<div class="col-md-12">
+    
+    <div class="col-md-12">
+        <form name="myForm" class="hospital-create-form" role="form" method="POST" novalidate>
+            <div class="form-body">
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:15px;">
+                    <div class="form-group col-md-3">
+    					<label><strong>Name</strong></label>
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" id="institution_name" ng-change="validation(1)" placeholder="Name" autocomplete="off" name="name" required ng-model="row.institution_name"> 
+    					</div>
+                        <span style="color:#ff0000;" ng-show="namevalidation"><strong>Name is required</strong></span>
+    				</div>
+				    <input type="hidden" id="real_institution_id" >  
+				    <input type="hidden" id="real_institution_type" >  
+                    
+    				
+                    <div class="form-group col-md-3">
+    					<label><strong>Phone Number</strong></label>
+    					
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" id="phone_number" ng-change="validation(3)" placeholder="Phone Number" name="phone" required ng-model="row.phone_number_one"> 
+    					</div>
+                        <span style="color:#ff0000;" ng-show="phonevalidation"><strong>Phone is required</strong></span>
+    				</div>
+                    <div class="form-group col-md-3">
+    					<label><strong>Email</strong></label>
+    					
+    					<div class="input-group" style="width:100%;">
+    						<input type="email" class="form-control" placeholder="Email" ng-change="validation(4)" id="email" name="email" required ng-model="row.email"> 
+    					</div>
+                        <span style="color:#ff0000;" ng-show="emailvalidation"><strong>Email is required</strong></span>
+    				</div>
+    				<div class="form-group col-md-3">
+    					<label><strong>Website</strong></label>
+    					
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" placeholder="Website" ng-change="validation(5)" id="website" name="website" ng-model="row.website" required> 
+    					</div>
+                        <span style="color:#ff0000;" ng-show="websitevalidation"><strong>Website is required</strong></span>
+    
+    				</div>
+                </div>
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:15px;">
+                    
+    				<div class="form-group col-md-3">
+    					<label><strong>Equipment</strong></label>
+					
+    					<div class="input-group" style="">
+    					    <select id="multiple" class="form-control select2-multiple"  multiple name="equipment"   required>
+        							<option ng-repeat="x in booleanArr" value="{{x.id}}" ng-selected="{{x.val}}">{{x.equipment_desc}}</option>
+
+        					</select>
+
+    	                    <span style="color:#ff0000;" ng-show="equipmentvalidation"><strong>Equipment is required</strong></span>
+    
+    					</div>
+    					
+    				</div>
+    				<div class="form-group col-md-3">
+    					<label><strong>Address1</strong></label>
+    					
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" id="address_1" ng-change="validation(7)" placeholder="Address1" name="address1" ng-model="row.address_one" required> 
+    					</div>
+                        <span style="color:#ff0000;" ng-show="address1validation"><strong>Address1 is required</strong></span>
+    					
+                    </div>
+                    <div class="form-group col-md-3">
+    					<label><strong>Address2</strong></label>
+    					
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" id="address_2" ng-change="validation(8)" placeholder="Address2" name="address2" ng-model="row.address_two" required> 
+    					</div>
+                        <span style="color:#ff0000;" ng-show="address2validation"><strong>Address2 is required</strong></span>
+    					
+    				</div>
+    				<input type="hidden" id="address_id"  >
+    				<div class="form-group col-md-3">
+    					<label><strong>City</strong></label>
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" placeholder="City" ng-change="validation(9)" name="city" id="city" required ng-model="row.city"> 
+    					</div>
+	                    <span style="color:#ff0000;" ng-show="cityvalidation"><strong>City is required</strong></span>
+    				</div>
+                </div>
+				
+				
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px;margin-bottom:15px;">
+				    
+				    <div class="form-group col-md-3">
+    					<label><strong>Country</strong></label>
+    					<div class="input-group" style="width:100%;">
+    						<select class="form-control" name="country"  id="country" required ng-model="row.country" >
+    						</select>
+    					</div>
+	                    <span style="color:#ff0000;" ng-show="countryvalidation"><strong>Country is required</strong></span>
+    				</div>
+    				<div class="form-group col-md-3">
+    					<label><strong>State</strong></label>
+    					<div class="input-group" style="width:100%;">
+    						<select class="form-control" name="state" id="state"  required ng-model="state">
+    						</select>
+    					</div>
+	                    <span style="color:#ff0000;" ng-show="statevalidation"><strong>State is required</strong></span>
+    				</div>
+    				<div class="form-group col-md-3">
+    					<label><strong>ZipCode</strong></label>
+    					<div class="input-group" style="width:100%;">
+    						<input type="text" class="form-control" id="zipcode" ng-change="validation(10)" placeholder="Zipcode" name="zipcode" ng-model="row.zipcode" required> 
+    					</div>
+	                    <span style="color:#ff0000;" ng-show="zipcodevalidation"><strong>Zipcode is required</strong></span>
+    				</div>
+				</div>
+				
+				<div class="form-group col-md-6" style="text-align:left;">
+					<label>&nbsp;</label>
+
+				    <div class="input-group" style="width:100%;">
+    					<!--<button type="button"  ng-disabled="myForm.$invalid" class="btn green" style="width:15%;" ng-click="create_hospital_save()">Save</button>-->
+                        <button type="button"   class="btn green" style="width:15%;" ng-click="facility_update()">Update</button>&nbsp;&nbsp;
+        				<button type="button" class="btn dark btn-outline" style="width:15%;" ng-click="close_update_facility()">Close</button>
+                        
+					</div>
+					
+				</div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var placeholder = "Select Equipment";
+
+        $(".select2, .select2-multiple").select2({
+            placeholder: placeholder,
+            width: null
+        });
+        
+        
+        
+            populateCountries("country", "state");
+        
+</script>
