@@ -17,7 +17,6 @@ var MetronicApp = angular.module("MetronicApp", [
     "datatables.scroller" ,
     "datatables.columnfilter" ,
     "chieffancypants.loadingBar",
-
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
